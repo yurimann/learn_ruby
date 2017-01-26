@@ -5,25 +5,33 @@ class Temperature
   end
 
   def to_celsius
-   @temp.each do |type, degree|
-     if type == :f
-       type = :c
-       degree = (degree - 32) * 5.0/9.0
-       return degree
-     end
-     return degree
-   end
+  #  @temp.each do |type, degree|
+  #    if type == :f
+  #      type = :c
+  #      degree = (degree - 32) * 5.0/9.0
+  #      return degree
+  #    end
+  #    return degree
+  #  end
+    if @temp[:f]
+      @temp[:c] = (@temp[:f] - 32) * 5.0/9.0
+    end
+      @temp[:c]
   end
 
   def to_fahrenheit
-    @temp.each do |type, degree|
-      if type == :c
-        type = :f
-        degree = degree*9.0/5.0 + 32
-        return degree
-      end
-      return degree
+    # @temp.each do |type, degree|
+    #   if type == :c
+    #     type = :f
+    #     degree = degree*9.0/5.0 + 32
+    #     return degree
+    #   end
+    #   return degree
+    # end
+    if @temp[:c]
+      @temp[:f] = @temp[:c]*9.0/5.0 + 32
     end
+      @temp[:f]
   end
 
   def self.in_celsius(temp)
